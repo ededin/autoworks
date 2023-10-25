@@ -20,31 +20,35 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           const ContentsPage(),
-          AnimatedContainer(
-            height: header.isNotEmpty ? 0.8.sh : 0,
-            curve: Curves.easeInCubic,
+          AnimatedOpacity(
             duration: const Duration(milliseconds: 300),
-            child: DecoratedBox(
-              decoration: const BoxDecoration(color: Colors.black),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: 0.8.sh,
-                  minWidth: 1.sw,
-                ),
-                child: header.isNotEmpty
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.2.sh),
-                        child: Center(
-                          child: Text(
-                            header,
-                            style: const TextStyle(
-                              fontSize: 50,
-                              color: Colors.white,
+            opacity: header.isNotEmpty ? 1 : 0,
+            child: AnimatedContainer(
+              height: header.isNotEmpty ? 0.8.sh : 0,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 300),
+              child: DecoratedBox(
+                decoration: const BoxDecoration(color: Colors.black),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: 0.8.sh,
+                    minWidth: 1.sw,
+                  ),
+                  child: header.isNotEmpty
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(vertical: 0.2.sh),
+                          child: Center(
+                            child: Text(
+                              header,
+                              style: const TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    : null,
+                        )
+                      : null,
+                ),
               ),
             ),
           ),
