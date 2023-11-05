@@ -202,7 +202,8 @@ class ContentsPage extends StatelessWidget {
                           ),
                           subtitle: const Text(
                             '9:30 - 01:30 / 3:30 - 09:30',
-                            style: TextStyle(color: Colors.red, fontSize: 12),
+                            style:
+                                TextStyle(color: AppColors.red, fontSize: 12),
                           ),
                         ),
                       ),
@@ -212,7 +213,7 @@ class ContentsPage extends StatelessWidget {
                       width: 0.20.sw,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1.0),
-                        color: Colors.red,
+                        color: AppColors.red,
                       ),
                       child: Center(
                         child: ListTile(
@@ -287,7 +288,7 @@ class ContentsPage extends StatelessWidget {
                         width: 0.20.sw,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(0.0),
-                          color: Colors.red,
+                          color: AppColors.red,
                         ),
                       ),
                       Container(
@@ -295,7 +296,7 @@ class ContentsPage extends StatelessWidget {
                         width: 0.20.sw,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(22.0),
-                          color: Colors.red,
+                          color: AppColors.red,
                         ),
                         child: Center(
                           child: Text(
@@ -314,7 +315,7 @@ class ContentsPage extends StatelessWidget {
                         width: 0.20.sw,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(22.0),
-                          color: Colors.red,
+                          color: AppColors.red,
                         ),
                         child: Center(
                           child: Text(
@@ -331,7 +332,7 @@ class ContentsPage extends StatelessWidget {
                         width: 0.20.sw,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(0.0),
-                          color: Colors.red,
+                          color: AppColors.red,
                         ),
                       ),
                     ],
