@@ -13,9 +13,27 @@ List<String> text1 = [
   'Wheels & Tyres'
 ];
 
-class ContentsPage extends StatelessWidget {
+List<String> services = [
+  'Paint Protection Flim (PPF)',
+  'Car DIP',
+  'Window Flims',
+  'Nano Ceramic Coating',
+  'Wrapping',
+  'Smart Repairs',
+  'Wheel Repairs',
+  'Leather Care',
+  'Detailing',
+];
+
+class ContentsPage extends StatefulWidget {
   const ContentsPage({super.key});
 
+  @override
+  State<ContentsPage> createState() => _ContentsPageState();
+}
+
+class _ContentsPageState extends State<ContentsPage> {
+  String? selectedService;
   @override
   Widget build(BuildContext context) {
     constants.screenHeight = MediaQuery.of(context).size.height;
@@ -138,27 +156,42 @@ class ContentsPage extends StatelessWidget {
                                         const SizedBox(
                                           height: 12,
                                         ),
-                                        const Text(
-                                          'Thouands Of Option',
-                                          style: TextStyle(
-                                              fontSize: 15,
+                                        Text(
+                                          i == 0
+                                              ? 'Car Care Qatar'
+                                              : i == 1
+                                                  ? 'Our Services'
+                                                  : 'Why AutoWorks?',
+                                          style: const TextStyle(
+                                              fontSize: 20,
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(
                                           height: 12,
                                         ),
-                                        const Text(
-                                          'Lorem Ipsum Is Simply Dummy\nText Of The Printing And\nTypesetting Industry.Lorem\nIpsm Has Been The Industry\'s\nStandard Dummy Text Ever Since\nThe 1500s When an Unknown\nPrinter Took A Gallery Of Type And\nScrambled It To Make A Type\nSpecimen Book',
-                                          style: TextStyle(
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20),
+                                          child: Text(
+                                            i == 0
+                                                ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
+                                                : i == 1
+                                                    ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
+                                                    : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
+                                            style: const TextStyle(
                                               fontSize: 13,
                                               color: Colors.black,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.bold,
+                                              wordSpacing: 5,
+                                            ),
+                                            textAlign: TextAlign.justify,
+                                          ),
                                         ),
                                         const SizedBox(
                                           height: 12,
                                         ),
-                                        Container(
+                                        /*  Container(
                                           padding: const EdgeInsets.all(5),
                                           color: Colors.black,
                                           child: const Text(
@@ -167,7 +200,7 @@ class ContentsPage extends StatelessWidget {
                                               color: Colors.white,
                                             ),
                                           ),
-                                        ),
+                                        ), */
                                       ],
                                     ),
                                   ),
@@ -256,6 +289,183 @@ class ContentsPage extends StatelessWidget {
             ],
           ),
           Container(
+            height: 0.25.sh,
+            width: 1.sw,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+              color: AppColors.red,
+            ),
+            child: SizedBox(
+              height: 0.1.sh,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text(
+                    'GET IN TOUCH',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 0.15.sw,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Name',
+                        hintStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        labelStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 0.15.sw,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Enter Whatsapp No',
+                        hintStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        labelStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25, vertical: 2),
+                      child: DropdownButton(
+                        value: selectedService,
+                        style: const TextStyle(color: Colors.black),
+                        dropdownColor: Colors.white,
+                        underline: const SizedBox(),
+                        iconEnabledColor: Colors.black,
+                        hint: const Text(
+                          'Select Service',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        items: services
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedService = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 0.15.sw,
+                    height: 50,
+                    child: Center(
+                      child: InkWell(
+                        onTap: () {},
+                        child: SizedBox(
+                          width: 0.08.sw,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Center(
+                                child: Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                    color: AppColors.red,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          /*     Container(
             height: 0.70.sh,
             width: 1.sw,
             decoration: BoxDecoration(
@@ -340,6 +550,7 @@ class ContentsPage extends StatelessWidget {
               ],
             ),
           ),
+       */
           Container(
             height: 0.50.sh,
             width: 1.sw,
