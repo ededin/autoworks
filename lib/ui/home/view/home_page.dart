@@ -17,46 +17,72 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     constants.screenHeight = MediaQuery.of(context).size.height;
     constants.screenWidth = MediaQuery.of(context).size.width;
+
+    double height() => header == "Contact Us" ? 0.6.sh : 0.7.sh;
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          const ContentsPage(),
-          AnimatedOpacity(
-            duration: const Duration(milliseconds: 300),
-            opacity: header.isNotEmpty ? 1 : 0,
-            child: AnimatedContainer(
-              height: header.isNotEmpty ? 0.8.sh : 0,
-              decoration: const BoxDecoration(color: Colors.black),
-              curve: Curves.ease,
-              duration: const Duration(milliseconds: 300),
-              child: header == "About us"
-                  ? const AboutUS()
-                  : header == "Our Team"
-                      ? const OurTeam()
-                      : header == "Services"
-                          ? const Services()
-                          : ConstrainedBox(
-                              constraints: BoxConstraints(
-                                maxHeight: 0.8.sh,
-                                minWidth: 1.sw,
-                              ),
-                              child: header.isNotEmpty
-                                  ? Center(
-                                      child: Text(
-                                        header == "Shop"
-                                            ? "Coming Soon....!"
-                                            : header,
-                                        style: const TextStyle(
-                                          fontSize: 50,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    )
-                                  : null,
-                            ),
+          ContentsPage(
+            onClick: (p0) {
+              print('P0: ${p0}');
+              if (p0 != "Home") {
+                setState(() {
+                  header = p0;
+                });
+              } else {
+                Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) {
+                    return const HomePage();
+                  },
+                ), (route) => false);
+              }
+            },
+          ),
+          MouseRegion(
+            onExit: (event) {
+              setState(() {
+                header = '';
+              });
+            },
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 400),
+              opacity: header.isNotEmpty ? 1 : 0,
+              child: AnimatedContainer(
+                height: header.isNotEmpty ? height() : 0,
+                decoration: const BoxDecoration(color: Colors.black),
+                curve: Curves.ease,
+                duration: const Duration(milliseconds: 300),
+                child: header == "About Us"
+                    ? const AboutUS()
+                    : header == "Contact Us"
+                        ? const ContactUS()
+                        : header == "Our Team"
+                            ? const OurTeam()
+                            : header == "Services"
+                                ? const Services()
+                                : ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      maxHeight: 0.8.sh,
+                                      minWidth: 1.sw,
+                                    ),
+                                    child: header.isNotEmpty
+                                        ? Center(
+                                            child: Text(
+                                              header == "Shop"
+                                                  ? "Coming Soon....!"
+                                                  : header,
+                                              style: const TextStyle(
+                                                fontSize: 50,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          )
+                                        : null,
+                                  ),
+              ),
             ),
           ),
           MenuBar(
@@ -74,6 +100,99 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+class ContactUS extends StatelessWidget {
+  const ContactUS({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 1.sw,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // SizedBox(height: 0.1.sh),
+          /* const Text(
+            "Contact Us\n",
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.white,
+            ),
+          ), */
+          Image.asset(
+            height: 0.2.sh,
+            // width: 200,
+            'assets/images/logo.png',
+          ),
+          const SizedBox(height: 40),
+          SizedBox(
+            width: 0.6.sw,
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Entypo.phone,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 20),
+                    Text(
+                      '+974 4486 7214',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 12),
+                    Text(
+                      'info@autoworksqa.com',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Octicons.location,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      'Hayol Street,Doha',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class AboutUS extends StatelessWidget {
   const AboutUS({
     super.key,
@@ -81,41 +200,39 @@ class AboutUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 0.65.sh),
-      child: Column(
-        children: [
-          const SizedBox(height: 100),
-          const Text(
-            "About us",
-            style: TextStyle(
-              fontSize: 50,
-              color: Colors.white,
-            ),
+    return Column(
+      children: [
+        const SizedBox(height: 100),
+        const Text(
+          "About us",
+          style: TextStyle(
+            fontSize: 50,
+            color: Colors.white,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                height: 0.4.sh,
-                // width: 200,
-                'assets/images/car1.png',
-              ),
-              SizedBox(
-                width: 0.5.sw,
-                child: const Text(
-                  "\n\nAutoworks car care center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing Manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make the clients feel satisfied.",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(
+              height: 0.4.sh,
+              // width: 200,
+              'assets/images/car1.png',
+            ),
+            SizedBox(
+              width: 0.5.sw,
+              height: 0.5.sh,
+              child: const Text(
+                "\n\nAutoworks car care center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing Manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make the clients feel satisfied.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -173,8 +290,6 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('SERVICESKEYS[I].CURRENTCONTEXT: ${servicesKeys[0].currentContext}');
-
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 0.65.sh),
       child: SizedBox(
@@ -191,43 +306,51 @@ class Services extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Wrap(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                alignment: WrapAlignment.spaceEvenly,
-                children: [
-                  for (int i = 0; i < services.length; i++)
-                    Builder(builder: (context) {
-                      TextSized textSized = TextSized(
-                        text: services[i],
-                        textStyle: const TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      );
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.05.sh),
-                        child: SizedBox(
-                          width: 0.25.sw,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              textSized,
-                              const SizedBox(height: 10),
-                              Container(
-                                width: (textSized.txtSize.width) * 0.2,
-                                height: 2,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
+              Center(
+                child: Wrap(
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  alignment: WrapAlignment.spaceEvenly,
+                  children: [
+                    for (int i = 0; i < services.length; i++)
+                      Builder(builder: (context) {
+                        // TextSized textSized = TextSized(
+                        //   text: services[i],
+                        //   textStyle: const TextStyle(
+                        //     fontSize: 25,
+                        //     color: Colors.white,
+                        //   ),
+                        // );
+                        return Padding(
+                          padding: EdgeInsets.symmetric(vertical: 0.05.sh),
+                          child: SizedBox(
+                            width: 0.25.sw,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  services[i],
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              )
-                            ],
+                                const SizedBox(height: 10),
+                                /*  Container(
+                                  width: (textSized.txtSize.width) * 0.2,
+                                  height: 2,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                ) */
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    })
-                ],
+                        );
+                      })
+                  ],
+                ),
               ),
             ],
           ),

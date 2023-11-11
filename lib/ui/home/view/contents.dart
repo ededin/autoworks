@@ -1,3 +1,8 @@
+import 'dart:ui';
+
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
 import '../../../all_packages.dart';
 
 List<String> text = [
@@ -26,7 +31,9 @@ List<String> services = [
 ];
 
 class ContentsPage extends StatefulWidget {
-  const ContentsPage({super.key});
+  final void Function(String) onClick;
+
+  const ContentsPage({super.key, required this.onClick});
 
   @override
   State<ContentsPage> createState() => _ContentsPageState();
@@ -58,7 +65,7 @@ class _ContentsPageState extends State<ContentsPage> {
                         ),
                       ),
                     ),
-                    child: Padding(
+                    /*      child: Padding(
                       padding: EdgeInsets.only(left: 0.05.sw),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,6 +109,7 @@ class _ContentsPageState extends State<ContentsPage> {
                         ],
                       ),
                     ),
+                */
                   ),
                   Container(
                     height: 0.72.sh,
@@ -171,8 +179,9 @@ class _ContentsPageState extends State<ContentsPage> {
                                           height: 12,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20),
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 0.03.sw,
+                                          ),
                                           child: Text(
                                             i == 0
                                                 ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
@@ -180,10 +189,10 @@ class _ContentsPageState extends State<ContentsPage> {
                                                     ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
                                                     : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
                                             style: const TextStyle(
-                                              fontSize: 13,
+                                              fontSize: 15,
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
-                                              wordSpacing: 5,
+                                              // wordSpacing: 5,
                                             ),
                                             textAlign: TextAlign.justify,
                                           ),
@@ -224,14 +233,14 @@ class _ContentsPageState extends State<ContentsPage> {
                       width: 0.20.sw,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1.0),
-                        color: Colors.white,
+                        color: Colors.white.withOpacity(0.9),
                       ),
                       child: Center(
                         child: ListTile(
                           leading: Image.asset('assets/images/timer.png'),
                           title: const Text(
                             'We are Open Sat To Thur',
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(color: Colors.black, fontSize: 12),
                           ),
                           subtitle: const Text(
                             '9:30 - 01:30 / 3:30 - 09:30',
@@ -246,7 +255,7 @@ class _ContentsPageState extends State<ContentsPage> {
                       width: 0.20.sw,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1.0),
-                        color: AppColors.red,
+                        color: AppColors.red.withOpacity(0.8),
                       ),
                       child: Center(
                         child: ListTile(
@@ -256,7 +265,7 @@ class _ContentsPageState extends State<ContentsPage> {
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
                           subtitle: const Text(
-                            '+97444867214',
+                            '+974 4486 7214',
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                         ),
@@ -267,18 +276,18 @@ class _ContentsPageState extends State<ContentsPage> {
                       width: 0.20.sw,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1.0),
-                        color: Colors.black,
+                        color: Colors.black.withOpacity(0.8),
                       ),
                       child: Center(
                         child: ListTile(
                           leading: Image.asset('assets/images/location.png'),
                           title: const Text(
-                            'Need A Repair? Our Address',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                            'Acquire services',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                           subtitle: const Text(
-                            'Building No 156 Zone,\n56 street 819,Doha',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                            'Hayol Street,Doha',
+                            style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
                         ),
                       ),
@@ -293,19 +302,28 @@ class _ContentsPageState extends State<ContentsPage> {
             width: 1.sw,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: AppColors.red,
+              color: Colors.black,
             ),
             child: SizedBox(
               height: 0.1.sh,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    'GET IN TOUCH',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                    ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        "assets/images/whatsapp.png",
+                        height: 30,
+                      ),
+                      const Text(
+                        'GET IN TOUCH',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: 0.15.sw,
@@ -351,7 +369,21 @@ class _ContentsPageState extends State<ContentsPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  Container(
+                    width: 0.16.sw,
+                    decoration: const BoxDecoration(color: Colors.white),
+                    child: InternationalPhoneNumberInput(
+                      selectorConfig: const SelectorConfig(
+                        selectorType: PhoneInputSelectorType.DROPDOWN,
+                        showFlags: false,
+                        setSelectorButtonAsPrefixIcon: true,
+                      ),
+                      hintText: "WhatsApp No",
+                      initialValue: PhoneNumber(isoCode: "QA"),
+                      onInputChanged: (PhoneNumber value) {},
+                    ),
+                  ),
+                  /* SizedBox(
                     width: 0.15.sw,
                     child: TextField(
                       decoration: InputDecoration(
@@ -394,7 +426,7 @@ class _ContentsPageState extends State<ContentsPage> {
                         ),
                       ),
                     ),
-                  ),
+                  ), */
                   DecoratedBox(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -409,17 +441,19 @@ class _ContentsPageState extends State<ContentsPage> {
                         dropdownColor: Colors.white,
                         underline: const SizedBox(),
                         iconEnabledColor: Colors.black,
-                        hint: const Text(
+                        hint: Text(
                           'Select Service',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
+                          style: GoogleFonts.questrial(color: Colors.black),
                         ),
                         items: services
                             .map(
                               (e) => DropdownMenuItem(
                                 value: e,
-                                child: Text(e),
+                                child: Text(
+                                  e,
+                                  style: GoogleFonts.questrial(
+                                      color: Colors.black),
+                                ),
                               ),
                             )
                             .toList(),
@@ -580,33 +614,20 @@ class _ContentsPageState extends State<ContentsPage> {
                   height: 40,
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 0.07.sw),
-                    child: GridView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 4,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        mainAxisSpacing: 50,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          height: 30,
-                          width: 0.10.sw,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/${index + 1}.png',
-                              ),
-                              fit: BoxFit.cover,
-                              scale: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      for (var index = 0; index < 4; index++)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/images/${index + 1}.png',
+                            height: 0.4.sw,
+                            fit: BoxFit.cover,
+                            width: 0.2.sw,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20)
@@ -716,50 +737,65 @@ class _ContentsPageState extends State<ContentsPage> {
                 const SizedBox(
                   height: 40,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 0.05.sw),
-                    child: GridView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 4,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        mainAxisSpacing: 50,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Container(
-                                height: 0.20.sh,
-                                width: 0.2.sw,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/products$index.png',
+                Stack(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          for (var index = 0; index < 4; index++)
+                            Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Container(
+                                    height: 0.20.sh,
+                                    width: 0.2.sw,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          'assets/images/products$index.png',
+                                        ),
+                                        fit: BoxFit.cover,
+                                        // scale: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    fit: BoxFit.cover,
-                                    // scale: 1,
                                   ),
-                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                              ),
+                                const Text(
+                                  '\n\$122.99',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
                             ),
-                            const Text(
-                              '\n\$122.99',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+                        ],
+                      ),
                     ),
-                  ),
+                    ClipRRect(
+                      child: SizedBox(
+                        height: 0.35.sh,
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                          child: Container(
+                            color: Colors.black.withOpacity(0.7),
+                            child: const Center(
+                                child: Text(
+                              "Coming Soon...!",
+                              style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
+                            )),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 30),
@@ -840,7 +876,7 @@ class _ContentsPageState extends State<ContentsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Text(
-                  'SUBSCRIBE FOR OUR\nLATEST NEWSLETTER',
+                  'SUBSCRIBE FOR OUR\nLATEST OFFERS',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -883,21 +919,22 @@ class _ContentsPageState extends State<ContentsPage> {
               borderRadius: BorderRadius.circular(4.0),
               color: Colors.black,
             ),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Lorem Ipsum Is Simply Dummy\nText Of The Printing And\nTypesetting Industry.Lorem\nIpsm Has Been The Industry\'s\nStandard Dummy Text Ever Since\nThe 1500s When an Unknown\nPrinter Took A Gallery Of Type And\nScrambled It To Make A Type\nSpecimen Book',
-                      style: TextStyle(color: Colors.white),
-                    ),
                     SizedBox(
-                      height: 12,
+                      width: 0.2.sw,
+                      child: const Text(
+                        'Explore the extraordinary! Join our vibrant online community for daily inspiration, engaging conversations, and exclusive updates. Connect with like-minded individuals who share your passion. Elevate your online experience with us! ',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
                     ),
-                    Row(
+                    const SizedBox(height: 12),
+                    const Row(
                       children: [
                         Icon(
                           FontAwesome5.instagram,
@@ -931,123 +968,101 @@ class _ContentsPageState extends State<ContentsPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Comopany Links',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
-                    Text(
-                      'Home',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      'About Us',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      'Service,Shop',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      'Our Team',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      'Contact Us',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
-                    ),
+                    for (var i = 0; i < constants.header.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: InkWell(
+                          onTap: () {
+                            widget.onClick.call(constants.header[i]);
+                          },
+                          child: Text(
+                            constants.header[i],
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(
-                    'Contact Info',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 60,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Entypo.phone,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        '+974 4486 7214',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.email,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        'Xyz@gmai.com',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Octicons.location,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Text(
-                        'Building No 156 Zone,\n56 Street 819,Doha',
-                        style: TextStyle(
+                const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Contact Info',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    SizedBox(height: 60),
+                    Row(
+                      children: [
+                        Icon(
+                          Entypo.phone,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 4486 7214',
+                          style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w400,
-                            fontSize: 12),
-                      ),
-                    ],
-                  )
-                ])
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.email,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          'info@autoworksqa.com',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Icon(
+                          Octicons.location,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          'Hayol Street,Doha',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
               ],
             ),
           ),

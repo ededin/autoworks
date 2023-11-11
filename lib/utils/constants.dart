@@ -4,11 +4,11 @@ class Constants {
 
   List<String> header = [
     'Home',
-    'About us',
+    'About Us',
     'Services',
     'Shop',
     'Our Team',
-    'Contact us',
+    'Contact Us',
   ];
 }
 
