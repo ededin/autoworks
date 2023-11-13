@@ -739,7 +739,8 @@ class _ContentsPageState extends State<ContentsPage> {
                 ),
                 Stack(
                   children: [
-                    Expanded(
+                    SizedBox(
+                      height: 0.35.sh,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -784,13 +785,14 @@ class _ContentsPageState extends State<ContentsPage> {
                           child: Container(
                             color: Colors.black.withOpacity(0.7),
                             child: const Center(
-                                child: Text(
-                              "Coming Soon...!",
-                              style: TextStyle(
-                                fontSize: 50,
-                                color: Colors.white,
+                              child: Text(
+                                "Coming Soon...!",
+                                style: TextStyle(
+                                  fontSize: 50,
+                                  color: Colors.white,
+                                ),
                               ),
-                            )),
+                            ),
                           ),
                         ),
                       ),
