@@ -112,7 +112,7 @@ class _ContentsPageState extends State<ContentsPage> {
                 */
                   ),
                   Container(
-                    height: 0.72.sh,
+                    height: constants.isLaptop ? 0.72.sh : 1.8.sh,
                     width: 1.sw,
                     decoration: const BoxDecoration(
                       // color: AppColors.red,
@@ -124,7 +124,7 @@ class _ContentsPageState extends State<ContentsPage> {
                     child: Stack(
                       children: [
                         Container(
-                          height: 0.72.sh,
+                          height: constants.isLaptop ? 0.72.sh : 2.sh,
                           width: 1.sw,
                           color: AppColors.red.withOpacity(0.8),
                         ),
@@ -146,74 +146,83 @@ class _ContentsPageState extends State<ContentsPage> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                for (var i = 0; i < 3; i++)
-                                  Container(
-                                    height: 0.45.sh,
-                                    width: 0.20.sw,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(17.0),
-                                        color: Colors.white),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Text(
-                                          i == 0
-                                              ? 'Car Care Qatar'
-                                              : i == 1
-                                                  ? 'Our Services'
-                                                  : 'Why AutoWorks?',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 0.03.sw,
+                            Center(
+                              child: Wrap(
+                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                alignment: WrapAlignment.spaceEvenly,
+                                runAlignment: WrapAlignment.spaceEvenly,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                spacing: 0.1.sw,
+                                runSpacing: 0.1.sw,
+
+                                children: [
+                                  for (var i = 0; i < 3; i++)
+                                    Container(
+                                      height: 0.45.sh,
+                                      width:
+                                          constants.isLaptop ? 0.20.sw : 0.8.sw,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(17.0),
+                                          color: Colors.white),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          const SizedBox(
+                                            height: 12,
                                           ),
-                                          child: Text(
+                                          Text(
                                             i == 0
-                                                ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
+                                                ? 'Car Care Qatar'
                                                 : i == 1
-                                                    ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
-                                                    : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
+                                                    ? 'Our Services'
+                                                    : 'Why AutoWorks?',
                                             style: const TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              // wordSpacing: 5,
-                                            ),
-                                            textAlign: TextAlign.justify,
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        /*  Container(
-                                          padding: const EdgeInsets.all(5),
-                                          color: Colors.black,
-                                          child: const Text(
-                                            'Read More',
-                                            style: TextStyle(
-                                              color: Colors.white,
+                                          const SizedBox(
+                                            height: 12,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 0.03.sw,
+                                            ),
+                                            child: Text(
+                                              i == 0
+                                                  ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
+                                                  : i == 1
+                                                      ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
+                                                      : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                // wordSpacing: 5,
+                                              ),
+                                              textAlign: TextAlign.justify,
                                             ),
                                           ),
-                                        ), */
-                                      ],
+                                          const SizedBox(
+                                            height: 12,
+                                          ),
+                                          /*  Container(
+                                            padding: const EdgeInsets.all(5),
+                                            color: Colors.black,
+                                            child: const Text(
+                                              'Read More',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ), */
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 20),
                           ],
@@ -223,91 +232,105 @@ class _ContentsPageState extends State<ContentsPage> {
                   ),
                 ],
               ),
-              Transform.translate(
-                offset: Offset(0, 0.7.sh),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 0.20.sh,
-                      width: 0.20.sw,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1.0),
-                        color: Colors.white.withOpacity(0.9),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Image.asset('assets/images/timer.png'),
-                          title: const Text(
-                            'We are Open Sat To Thur',
-                            style: TextStyle(color: Colors.black, fontSize: 12),
+              if (constants.isLaptop)
+                Transform.translate(
+                  offset: Offset(0, 0.7.sh),
+                  child: Center(
+                    child: Wrap(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      alignment: WrapAlignment.center,
+                      runAlignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Container(
+                          height: 0.20.sh,
+                          width: constants.isLaptop ? 0.20.sw : 0.20.sw,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(1.0),
+                            color: Colors.white.withOpacity(0.9),
                           ),
-                          subtitle: const Text(
-                            '9:30 - 01:30 / 3:30 - 09:30',
-                            style:
-                                TextStyle(color: AppColors.red, fontSize: 12),
+                          child: Center(
+                            child: ListTile(
+                              leading: Image.asset('assets/images/timer.png'),
+                              title: const Text(
+                                'We are Open Sat To Thur',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 12),
+                              ),
+                              subtitle: const Text(
+                                '9:30 - 01:30 / 3:30 - 09:30',
+                                style: TextStyle(
+                                    color: AppColors.red, fontSize: 12),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Container(
+                          height: 0.20.sh,
+                          width: 0.20.sw,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(1.0),
+                            color: AppColors.red.withOpacity(0.8),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              leading: Image.asset('assets/images/person.png'),
+                              title: const Text(
+                                'Have A Question? Call Us',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                              subtitle: const Text(
+                                '+974 4486 7214',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 0.20.sh,
+                          width: 0.20.sw,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(1.0),
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              leading:
+                                  Image.asset('assets/images/location.png'),
+                              title: const Text(
+                                'Acquire services',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                              subtitle: const Text(
+                                'Hayol Street,Doha',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      height: 0.20.sh,
-                      width: 0.20.sw,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1.0),
-                        color: AppColors.red.withOpacity(0.8),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Image.asset('assets/images/person.png'),
-                          title: const Text(
-                            'Have A Question? Call Us',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                          subtitle: const Text(
-                            '+974 4486 7214',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 0.20.sh,
-                      width: 0.20.sw,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1.0),
-                        color: Colors.black.withOpacity(0.8),
-                      ),
-                      child: Center(
-                        child: ListTile(
-                          leading: Image.asset('assets/images/location.png'),
-                          title: const Text(
-                            'Acquire services',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                          subtitle: const Text(
-                            'Hayol Street,Doha',
-                            style: TextStyle(color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
-              ),
             ],
           ),
           Container(
-            height: 0.25.sh,
+            height: constants.isLaptop ? 0.25.sh : 0.7.sh,
             width: 1.sw,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
               color: Colors.black,
             ),
-            child: SizedBox(
-              height: 0.1.sh,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Center(
+              child: Wrap(
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                alignment: WrapAlignment.spaceEvenly,
+                runAlignment: WrapAlignment.spaceEvenly,
+                runSpacing: !constants.isLaptop ? 0.07.sh : 10,
                 children: [
                   Column(
                     mainAxisSize: MainAxisSize.min,
@@ -326,7 +349,7 @@ class _ContentsPageState extends State<ContentsPage> {
                     ],
                   ),
                   SizedBox(
-                    width: 0.15.sw,
+                    width: constants.isLaptop ? 0.15.sw : 0.8.sw,
                     child: TextField(
                       decoration: InputDecoration(
                         filled: true,
@@ -370,7 +393,7 @@ class _ContentsPageState extends State<ContentsPage> {
                     ),
                   ),
                   Container(
-                    width: 0.16.sw,
+                    width: constants.isLaptop ? 0.16.sw : 0.8.sw,
                     decoration: const BoxDecoration(color: Colors.white),
                     child: InternationalPhoneNumberInput(
                       selectorConfig: const SelectorConfig(
@@ -427,52 +450,59 @@ class _ContentsPageState extends State<ContentsPage> {
                       ),
                     ),
                   ), */
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 2),
-                      child: DropdownButton(
-                        value: selectedService,
-                        style: const TextStyle(color: Colors.black),
-                        dropdownColor: Colors.white,
-                        underline: const SizedBox(),
-                        iconEnabledColor: Colors.black,
-                        hint: Text(
-                          'Select Service',
-                          style: GoogleFonts.questrial(color: Colors.black),
+                  SizedBox(
+                    width: constants.isLaptop ? null : 0.8.sw,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                          vertical: 2,
                         ),
-                        items: services
-                            .map(
-                              (e) => DropdownMenuItem(
-                                value: e,
-                                child: Text(
-                                  e,
-                                  style: GoogleFonts.questrial(
-                                      color: Colors.black),
+                        child: DropdownButton(
+                          value: selectedService,
+                          style: const TextStyle(color: Colors.black),
+                          dropdownColor: Colors.white,
+                          underline: const SizedBox(),
+                          iconEnabledColor: Colors.black,
+                          isExpanded: !constants.isLaptop,
+                          hint: Text(
+                            'Select Service',
+                            style: GoogleFonts.questrial(color: Colors.black),
+                          ),
+                          items: services
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    e,
+                                    style: GoogleFonts.questrial(
+                                        color: Colors.black),
+                                  ),
                                 ),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            selectedService = value;
-                          });
-                        },
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedService = value;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: 0.15.sw,
+                    // width: 0.15.sw,
                     height: 50,
                     child: Center(
                       child: InkWell(
                         onTap: () {},
                         child: SizedBox(
-                          width: 0.08.sw,
+                          width: constants.isLaptop ? 0.08.sw : 0.8.sw,
+                          // height: 50,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -714,7 +744,7 @@ class _ContentsPageState extends State<ContentsPage> {
             ),
           ),*/
           Container(
-            height: 0.55.sh,
+            height: 0.6.sh,
             width: 1.sw,
             decoration: const BoxDecoration(color: Colors.black),
             child: Column(
@@ -866,204 +896,222 @@ class _ContentsPageState extends State<ContentsPage> {
               ],
             ),
           ),
-          Container(
-            height: 0.12.sh,
-            width: 0.60.sw,
-            margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.0),
-              color: AppColors.red,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  'SUBSCRIBE FOR OUR\nLATEST OFFERS',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
+          if (constants.isLaptop)
+            Container(
+              height: 0.12.sh,
+              width: 0.60.sw,
+              margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.0),
+                color: AppColors.red,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text(
+                    'SUBSCRIBE FOR OUR\nLATEST OFFERS',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: SizedBox(
-                    height: 50,
-                    width: 0.23.sw,
-                    child: const TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Your Email Address..',
-                        hintStyle: TextStyle(color: Colors.black),
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: SizedBox(
+                      height: 50,
+                      width: 0.23.sw,
+                      child: const TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter Your Email Address..',
+                          hintStyle: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                MaterialButton(
-                  padding: const EdgeInsets.all(13.0),
-                  color: Colors.black,
-                  onPressed: () {},
-                  child: const Text(
-                    'Subcribe Now',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
+                  MaterialButton(
+                    padding: const EdgeInsets.all(13.0),
+                    color: Colors.black,
+                    onPressed: () {},
+                    child: const Text(
+                      'Subcribe Now',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
           Container(
-            height: 0.50.sh,
+            height: constants.isLaptop ? 0.50.sh : 0.6.sh,
             width: 1.sw,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
               color: Colors.black,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Wrap(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: WrapCrossAlignment.start,
+              runAlignment: WrapAlignment.center,
+              alignment: WrapAlignment.spaceEvenly,
+              runSpacing: 30,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 0.2.sw,
-                      child: const Text(
-                        'Explore the extraordinary! Join our vibrant online community for daily inspiration, engaging conversations, and exclusive updates. Connect with like-minded individuals who share your passion. Elevate your online experience with us! ',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                SizedBox(
+                  width: constants.isLaptop ? 0.2.sw : 0.8.sw,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: constants.isLaptop
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: constants.isLaptop ? 0.2.sw : 0.8.sw,
+                        child: const Text(
+                          'Explore the extraordinary! Join our vibrant online community for daily inspiration, engaging conversations, and exclusive updates. Connect with like-minded individuals who share your passion. Elevate your online experience with us! ',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    const Row(
-                      children: [
-                        Icon(
-                          FontAwesome5.instagram,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Icon(
-                          FontAwesome5.youtube,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Icon(
-                          FontAwesome5.facebook,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Icon(
-                          FontAwesome5.twitter,
-                          color: Colors.white,
-                        ),
-                      ],
-                    )
-                  ],
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: constants.isLaptop
+                            ? MainAxisAlignment.start
+                            : MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesome5.instagram,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Icon(
+                            FontAwesome5.youtube,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Icon(
+                            FontAwesome5.facebook,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Icon(
+                            FontAwesome5.twitter,
+                            color: Colors.white,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Comopany Links',
-                      style: TextStyle(
+                if (constants.isLaptop)
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Comopany Links',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      const SizedBox(height: 50),
+                      for (var i = 0; i < constants.header.length; i++)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: InkWell(
+                            onTap: () {
+                              widget.onClick.call(constants.header[i]);
+                            },
+                            child: Text(
+                              constants.header[i],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                SizedBox(
+                  width: constants.isLaptop ? 0.15.sw : 0.6.sw,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Contact Info',
+                        style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    for (var i = 0; i < constants.header.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: InkWell(
-                          onTap: () {
-                            widget.onClick.call(constants.header[i]);
-                          },
-                          child: Text(
-                            constants.header[i],
-                            style: const TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: constants.isLaptop ? 60 : 30),
+                      const Row(
+                        children: [
+                          Icon(
+                            Entypo.phone,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Text(
+                            '+974 4486 7214',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      const Row(
+                        children: [
+                          Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Text(
+                            'info@autoworksqa.com',
+                            style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400),
                           ),
-                        ),
+                        ],
                       ),
-                  ],
-                ),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Contact Info',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    SizedBox(height: 60),
-                    Row(
-                      children: [
-                        Icon(
-                          Entypo.phone,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          '+974 4486 7214',
-                          style: TextStyle(
+                      const SizedBox(height: 12),
+                      const Row(
+                        children: [
+                          Icon(
+                            Octicons.location,
                             color: Colors.white,
-                            fontWeight: FontWeight.w400,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.email,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          'info@autoworksqa.com',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Icon(
-                          Octicons.location,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          'Hayol Street,Doha',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
+                          SizedBox(
+                            width: 12,
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                          Text(
+                            'Hayol Street,Doha',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

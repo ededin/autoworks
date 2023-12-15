@@ -19,81 +19,96 @@ class _HomePageState extends State<HomePage> {
     constants.screenWidth = MediaQuery.of(context).size.width;
 
     double height() => header == "Contact Us" ? 0.6.sh : 0.7.sh;
+
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
+      drawer: constants.isLaptop ? null : MenuDrawer(),
+      appBar: constants.isLaptop
+          ? null
+          : AppBar(
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+              title: Image.asset(
+                'assets/images/logo.png',
+                height: 50,
+              ),
+            ),
       body: Stack(
         children: [
           ContentsPage(
             onClick: (p0) {
-              print('P0: ${p0}');
-              if (p0 != "Home") {
-                setState(() {
-                  header = p0;
-                });
-              } else {
-                Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return const HomePage();
-                  },
-                ), (route) => false);
+              if (constants.isLaptop) {
+                if (p0 != "Home") {
+                  setState(() {
+                    header = p0;
+                  });
+                } else {
+                  Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return const HomePage();
+                    },
+                  ), (route) => false);
+                }
               }
             },
           ),
-          MouseRegion(
-            onExit: (event) {
-              setState(() {
-                header = '';
-              });
-            },
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 400),
-              opacity: header.isNotEmpty ? 1 : 0,
-              child: AnimatedContainer(
-                height: header.isNotEmpty ? height() : 0,
-                decoration: const BoxDecoration(color: Colors.black),
-                curve: Curves.ease,
-                duration: const Duration(milliseconds: 300),
-                child: header == "About Us"
-                    ? const AboutUS()
-                    : header == "Contact Us"
-                        ? const ContactUS()
-                        : header == "Our Team"
-                            ? const OurTeam()
-                            : header == "Services"
-                                ? const Services()
-                                : ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      maxHeight: 0.8.sh,
-                                      minWidth: 1.sw,
-                                    ),
-                                    child: header.isNotEmpty
-                                        ? Center(
-                                            child: Text(
-                                              header == "Shop"
-                                                  ? "Coming Soon....!"
-                                                  : header,
-                                              style: const TextStyle(
-                                                fontSize: 50,
-                                                color: Colors.white,
+          if ((constants.isLaptop))
+            MouseRegion(
+              onExit: (event) {
+                setState(() {
+                  header = '';
+                });
+              },
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 400),
+                opacity: header.isNotEmpty ? 1 : 0,
+                child: AnimatedContainer(
+                  height: header.isNotEmpty ? height() : 0,
+                  decoration: const BoxDecoration(color: Colors.black),
+                  curve: Curves.ease,
+                  duration: const Duration(milliseconds: 300),
+                  child: header == "About Us"
+                      ? const AboutUS()
+                      : header == "Contact Us"
+                          ? const ContactUS()
+                          : header == "Our Team"
+                              ? const OurTeam()
+                              : header == "Services"
+                                  ? const Services()
+                                  : ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        maxHeight: 0.8.sh,
+                                        minWidth: 1.sw,
+                                      ),
+                                      child: header.isNotEmpty
+                                          ? Center(
+                                              child: Text(
+                                                header == "Shop"
+                                                    ? "Coming Soon....!"
+                                                    : header,
+                                                style: const TextStyle(
+                                                  fontSize: 50,
+                                                  color: Colors.white,
+                                                ),
                                               ),
-                                            ),
-                                          )
-                                        : null,
-                                  ),
+                                            )
+                                          : null,
+                                    ),
+                ),
               ),
             ),
-          ),
-          MenuBar(
-            onHover: (p0) {
-              if (p0 != "Home") {
-                setState(() {
-                  header = p0;
-                });
-              }
-            },
-          ),
+          if (constants.isLaptop)
+            MenuBar(
+              onHover: (p0) {
+                if (p0 != "Home") {
+                  setState(() {
+                    header = p0;
+                  });
+                }
+              },
+            ),
         ],
       ),
     );
