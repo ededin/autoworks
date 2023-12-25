@@ -128,104 +128,108 @@ class _ContentsPageState extends State<ContentsPage> {
                           width: 1.sw,
                           color: AppColors.red.withOpacity(0.8),
                         ),
-                        Column(
-                          children: [
-                            SizedBox(height: 0.12.sh),
-                            const Text(
-                              'Our Services',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
+                        SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 0.12.sh),
+                              const Text(
+                                'Our Services',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Great Car Services',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
+                              const Text(
+                                'Great Car Services',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                            Center(
-                              child: Wrap(
-                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                alignment: WrapAlignment.spaceEvenly,
-                                runAlignment: WrapAlignment.spaceEvenly,
-                                crossAxisAlignment: WrapCrossAlignment.center,
-                                spacing: 0.1.sw,
-                                runSpacing: 0.1.sw,
-
-                                children: [
-                                  for (var i = 0; i < 3; i++)
-                                    Container(
-                                      height: 0.45.sh,
-                                      width:
-                                          constants.isLaptop ? 0.20.sw : 0.8.sw,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(17.0),
-                                          color: Colors.white),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          const SizedBox(
-                                            height: 12,
-                                          ),
-                                          Text(
-                                            i == 0
-                                                ? 'Car Care Qatar'
-                                                : i == 1
-                                                    ? 'Our Services'
-                                                    : 'Why AutoWorks?',
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const SizedBox(
-                                            height: 12,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 0.03.sw,
-                                            ),
-                                            child: Text(
-                                              i == 0
-                                                  ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
-                                                  : i == 1
-                                                      ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
-                                                      : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                // wordSpacing: 5,
+                              const SizedBox(height: 20),
+                              Center(
+                                child: Wrap(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  alignment: WrapAlignment.spaceEvenly,
+                                  runAlignment: WrapAlignment.spaceEvenly,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 0.1.sw,
+                                  runSpacing: 0.1.sw,
+                          
+                                  children: [
+                                    for (var i = 0; i < 3; i++)
+                                      Container(
+                                        height: 0.45.sh,
+                                        width:
+                                            constants.isLaptop ? 0.20.sw : 0.8.sw,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(17.0),
+                                            color: Colors.white),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              const SizedBox(
+                                                height: 12,
                                               ),
-                                              textAlign: TextAlign.justify,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 12,
-                                          ),
-                                          /*  Container(
-                                            padding: const EdgeInsets.all(5),
-                                            color: Colors.black,
-                                            child: const Text(
-                                              'Read More',
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                              Text(
+                                                i == 0
+                                                    ? 'Car Care Qatar'
+                                                    : i == 1
+                                                        ? 'Our Services'
+                                                        : 'Why AutoWorks?',
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold),
                                               ),
-                                            ),
-                                          ), */
-                                        ],
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal: 0.03.sw,
+                                                ),
+                                                child: Text(
+                                                  i == 0
+                                                      ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
+                                                      : i == 1
+                                                          ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
+                                                          : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
+                                                  style: const TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    // wordSpacing: 5,
+                                                  ),
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              /*  Container(
+                                                padding: const EdgeInsets.all(5),
+                                                color: Colors.black,
+                                                child: const Text(
+                                                  'Read More',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ), */
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
+                              const SizedBox(height: 20),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -747,96 +751,98 @@ class _ContentsPageState extends State<ContentsPage> {
             height: 0.6.sh,
             width: 1.sw,
             decoration: const BoxDecoration(color: Colors.black),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                const Text(
-                  'Part & Accesories',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Part & Accesories',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-                const Text(
-                  'CHECK OUT OUR PRODUCTS',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
+                  const Text(
+                    'CHECK OUT OUR PRODUCTS',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Stack(
-                  children: [
-                    SizedBox(
-                      height: 0.35.sh,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          for (var index = 0; index < 4; index++)
-                            Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: Container(
-                                    height: 0.20.sh,
-                                    width: 0.2.sw,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/products$index.png',
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Stack(
+                    children: [
+                      SizedBox(
+                        height: 0.35.sh,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            for (var index = 0; index < 4; index++)
+                              Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: Container(
+                                      height: 0.20.sh,
+                                      width: 0.2.sw,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/products$index.png',
+                                          ),
+                                          fit: BoxFit.cover,
+                                          // scale: 1,
                                         ),
-                                        fit: BoxFit.cover,
-                                        // scale: 1,
+                                        borderRadius: BorderRadius.circular(10.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
-                                ),
-                                const Text(
-                                  '\n\$122.99',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
+                                  const Text(
+                                    '\n\$122.99',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                        ],
+                                ],
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
-                    ClipRRect(
-                      child: SizedBox(
-                        height: 0.35.sh,
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: Container(
-                            color: Colors.black.withOpacity(0.7),
-                            child: const Center(
-                              child: Text(
-                                "Coming Soon...!",
-                                style: TextStyle(
-                                  fontSize: 50,
-                                  color: Colors.white,
+                      ClipRRect(
+                        child: SizedBox(
+                          height: 0.35.sh,
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                            child: Container(
+                              color: Colors.black.withOpacity(0.7),
+                              child: const Center(
+                                child: Text(
+                                  "Coming Soon...!",
+                                  style: TextStyle(
+                                    fontSize: 50,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 30),
-                  child: Image.asset(
-                    'assets/images/divider.png',
-                    height: 5,
+                      )
+                    ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 30),
+                    child: Image.asset(
+                      'assets/images/divider.png',
+                      height: 5,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(

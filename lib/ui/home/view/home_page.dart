@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
-      // drawer: constants.isLaptop ? null : MenuDrawer(),
+      drawer: constants.isLaptop ? null : const MenuDrawer(),
       appBar: constants.isLaptop
           ? null
           : AppBar(
@@ -122,7 +122,8 @@ class ContactUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return 
+    SizedBox(
       width: 1.sw,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -215,7 +216,8 @@ class AboutUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return 
+    Column(
       children: [
         const SizedBox(height: 100),
         const Text(
@@ -259,7 +261,8 @@ class OurTeam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
+    return 
+    ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 0.65.sh),
       child: Column(
         children: [
@@ -305,7 +308,8 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
+    return
+     ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 0.65.sh),
       child: SizedBox(
         width: 1.sw,
