@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
-      drawer: constants.isLaptop ? null : MenuDrawer(),
+      // drawer: constants.isLaptop ? null : MenuDrawer(),
       appBar: constants.isLaptop
           ? null
           : AppBar(

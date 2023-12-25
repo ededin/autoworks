@@ -20,17 +20,28 @@ class MenuDrawer extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             for (var i = 0; i < constants.header.length; i++)
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(
-                  constants.header[i],
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+              if (i == 0)
+                ListTile(
+                  title: Text(
+                    constants.header[i],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                )
+              else
+                ExpansionTile(
+                  title: Text(
+                    constants.header[i],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
             // const SizedBox(width: 150),
           ],
         ),
