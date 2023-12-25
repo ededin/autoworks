@@ -43,7 +43,7 @@ class _OurTeamPageState extends State<OurTeamPage> {
                 SizedBox(
                   width: 0.5.sw,
                   child: const Text(
-                    "\n\nOur team is the foundation of our quality, we take good care of them, and they take good care of your cars, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers, helpers, washing men, and videographers.",
+                    "\n\nOur team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 20,

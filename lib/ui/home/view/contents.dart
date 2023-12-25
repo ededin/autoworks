@@ -20,14 +20,14 @@ List<String> text1 = [
 
 List<String> services = [
   'Paint Protection Flim (PPF)',
-  'Car DIP',
-  'Window Flims',
+  'Pelable Paint',
+  'Window Flims', //
   'Nano Ceramic Coating',
-  'Wrapping',
-  'Smart Repairs',
-  'Wheel Repairs',
+  'Vinyl Wrapping',
+  'PDR Smart Repairs', //
+  'Alloy Wheel Repairs',
   'Leather Care',
-  'Detailing',
+  'Detailing', //
 ];
 
 class ContentsPage extends StatefulWidget {
@@ -155,13 +155,14 @@ class _ContentsPageState extends State<ContentsPage> {
                                   crossAxisAlignment: WrapCrossAlignment.center,
                                   spacing: 0.1.sw,
                                   runSpacing: 0.1.sw,
-                          
+
                                   children: [
                                     for (var i = 0; i < 3; i++)
                                       Container(
                                         height: 0.45.sh,
-                                        width:
-                                            constants.isLaptop ? 0.20.sw : 0.8.sw,
+                                        width: constants.isLaptop
+                                            ? 0.20.sw
+                                            : 0.8.sw,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(17.0),
@@ -183,7 +184,8 @@ class _ContentsPageState extends State<ContentsPage> {
                                                 style: const TextStyle(
                                                     fontSize: 20,
                                                     color: Colors.black,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               const SizedBox(
                                                 height: 12,
@@ -795,7 +797,8 @@ class _ContentsPageState extends State<ContentsPage> {
                                           fit: BoxFit.cover,
                                           // scale: 1,
                                         ),
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
                                     ),
                                   ),
@@ -821,7 +824,7 @@ class _ContentsPageState extends State<ContentsPage> {
                               color: Colors.black.withOpacity(0.7),
                               child: const Center(
                                 child: Text(
-                                  "Coming Soon...!",
+                                  "Coming Soon",
                                   style: TextStyle(
                                     fontSize: 50,
                                     color: Colors.white,

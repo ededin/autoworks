@@ -24,7 +24,7 @@ class _ShopPageState extends State<ShopPage> {
             ),
       body: const Center(
         child: Text(
-          "Coming Soon....!",
+          "Coming Soon",
           style: TextStyle(
             fontSize: 50,
             color: Colors.black,

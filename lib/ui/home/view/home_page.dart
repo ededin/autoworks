@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                                           ? Center(
                                               child: Text(
                                                 header == "Shop"
-                                                    ? "Coming Soon....!"
+                                                    ? "Coming Soon"
                                                     : header,
                                                 style: const TextStyle(
                                                   fontSize: 50,
@@ -122,8 +122,7 @@ class ContactUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    SizedBox(
+    return SizedBox(
       width: 1.sw,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -216,12 +215,11 @@ class AboutUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Column(
+    return Column(
       children: [
         const SizedBox(height: 100),
         const Text(
-          "About us",
+          "About Us",
           style: TextStyle(
             fontSize: 50,
             color: Colors.white,
@@ -239,7 +237,7 @@ class AboutUS extends StatelessWidget {
               width: 0.5.sw,
               height: 0.5.sh,
               child: const Text(
-                "\n\nAutoworks car care center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing Manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make the clients feel satisfied.",
+                "\n\nAuto Works Car Care Center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make clients feel satisfied.",
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 20,
@@ -261,8 +259,7 @@ class OurTeam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    ConstrainedBox(
+    return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 0.65.sh),
       child: Column(
         children: [
@@ -285,7 +282,7 @@ class OurTeam extends StatelessWidget {
               SizedBox(
                 width: 0.5.sw,
                 child: const Text(
-                  "\n\nOur team is the foundation of our quality, we take good care of them, and they take good care of your cars, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers, helpers, washing men, and videographers.",
+                  "\n\nOur team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 20,
@@ -308,8 +305,7 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-     ConstrainedBox(
+    return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 0.65.sh),
       child: SizedBox(
         width: 1.sw,
