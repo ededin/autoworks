@@ -37,6 +37,8 @@ dependencies:
   fluttericon: ^2.0.0
   google_fonts: ^6.1.0
   intl_phone_number_input: ^0.7.3+1
+  url_launcher: ^6.2.2
+  url_launcher_web: ^2.2.0
 
 dev_dependencies:
   flutter_test:

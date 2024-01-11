@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../all_packages.dart';
 
@@ -20,7 +21,7 @@ List<String> text1 = [
 
 List<String> services = [
   'Paint Protection Flim (PPF)',
-  'Pelable Paint',
+  'Peelable Paint',
   'Window Flims', //
   'Nano Ceramic Coating',
   'Vinyl Wrapping',
@@ -28,6 +29,30 @@ List<String> services = [
   'Alloy Wheel Repairs',
   'Leather Care',
   'Detailing', //
+];
+
+List<String> servicesContent = [
+  "Preserve your vehicle's pristine condition with our premium Paint Protection Film. Our PPF acts as an invisible shield, protecting against scratches, chips, and environmental contaminants. Engineered for durability and clarity, it ensures your paint's longevity and maintains the vehicle's resale value. Trust in our expert application for a seamless finish, safeguarding your investment against the rigors of the road.",
+  "Transform your vehicle's look with our Peelable Paint service. Ideal for those seeking a temporary color change or added protection, this innovative solution allows for complete color transformation while preserving the original paint. Easy to remove, it offers the flexibility to revert to the original color or try new shades as often as you like. It's a reversible, commitment-free way to customize your ride.",
+  "Enhance comfort and privacy with our premium Window Films. Our films block harmful UV rays, reduce heat and glare, and increase privacy and security. Available in various shades and grades, they add a sleek, custom look to your vehicle while improving the driving experience and protecting the interior from sun damage.", //
+  "Elevate your vehicle's shine and protection with our Nano Ceramic Coating. This advanced treatment forms a hard, glossy barrier that repels water, dirt, and grime, making cleaning a breeze. Enjoy enhanced color depth and a continuous new-car finish, while also providing substantial protection against UV rays, oxidation, and chemical stains. It's the long-lasting, luxurious care your vehicle deserves.",
+  "Customize your vehicle's appearance with our Vinyl Wrapping service. Choose from an extensive range of colors and finishes to personalize your ride uniquely. Our high-quality wraps not only give your car a brand-new look but also protect the original paint from scratches and fading. With our precise application, enjoy a flawless finish that stands out.",
+  "Address minor damages swiftly with our PDF Smart Repairs. This cost-effective service is perfect for repairing small dings, scratches, and scuffs. Using innovative techniques, we restore the affected area to its original state, maintaining your vehicle's aesthetic appeal and value. It's a quick, convenient solution for keeping your vehicle looking its best.", //
+  "Restore the beauty and integrity of your wheels with our specialized Alloy Wheel Repair services. From curb rash to corrosion, our expert technicians meticulously remove imperfections, returning your wheels to their original glory. We use the latest techniques and materials to ensure a durable and attractive finish, enhancing your vehicle's overall appearance and value.",
+  "Keep your vehicle's interior luxurious with our Leather Care services. We specialize in cleaning, conditioning, and protecting automotive leather, ensuring it remains soft, supple, and vibrant. Regular treatment prevents premature aging, cracking, and staining, preserving the comfort and value of your vehicle's interior.",
+  "Experience our comprehensive Detailing service for a vehicle that shines inside and out. Our meticulous process covers every inch, from a thorough exterior wash to an in-depth interior clean. We use the finest products and techniques to rejuvenate your vehicle, enhancing its appearance and preserving its condition. Regular detailing not only maintains its beauty but also extends its lifespan.", //
+];
+
+List<String> servicesImages = [
+  'assets/images/ppf.jpg',
+  'assets/images/peelable.png',
+  '', //
+  'assets/images/nano.jpg',
+  'assets/images/wrapping.jpg',
+  'assets/images/pdr.jpg',
+  'assets/images/alloy.png',
+  'assets/images/leather.jpg',
+  '', //
 ];
 
 class ContentsPage extends StatefulWidget {
@@ -131,21 +156,21 @@ class _ContentsPageState extends State<ContentsPage> {
                         SingleChildScrollView(
                           child: Column(
                             children: [
-                              SizedBox(height: 0.12.sh),
-                              const Text(
-                                'Our Services',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              const Text(
-                                'Great Car Services',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                ),
-                              ),
+                              SizedBox(height: 0.15.sh),
+                              // const Text(
+                              //   'Our Services',
+                              //   style: TextStyle(
+                              //     color: Colors.white,
+                              //     fontSize: 20,
+                              //   ),
+                              // ),
+                              // const Text(
+                              //   'Great Car Services',
+                              //   style: TextStyle(
+                              //     color: Colors.white,
+                              //     fontSize: 40,
+                              //   ),
+                              // ),
                               const SizedBox(height: 20),
                               Center(
                                 child: Wrap(
@@ -172,12 +197,10 @@ class _ContentsPageState extends State<ContentsPage> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              const SizedBox(
-                                                height: 12,
-                                              ),
+                                              const SizedBox(height: 12),
                                               Text(
                                                 i == 0
-                                                    ? 'Car Care Qatar'
+                                                    ? 'What is Auto Works?'
                                                     : i == 1
                                                         ? 'Our Services'
                                                         : 'Why AutoWorks?',
@@ -187,26 +210,24 @@ class _ContentsPageState extends State<ContentsPage> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
-                                              const SizedBox(
-                                                height: 12,
-                                              ),
+                                              const SizedBox(height: 12),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
                                                   horizontal: 0.03.sw,
                                                 ),
                                                 child: Text(
                                                   i == 0
-                                                      ? "AutoWorks Car Care Qatar is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
+                                                      ? "Auto Works Car Care Center is your trusted source for top-notch car care services. We specialize in paint protection film (PPF) installations and detailing to keep your vehicle looking its best. With a passion for perfection and a commitment to customer satisfaction, we're your go-to destination for automotive excellence."
                                                       : i == 1
-                                                          ? "AutoWorks Car Care Qatar offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
-                                                          : "Choose AutoWorks Car Care Qatar for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, AutoWorks delivers.",
+                                                          ? "AutoWorks Car Care Center offers a comprehensive range of services to maintain and enhance your vehicle. From PPF installations to professional detailing, we provide expert solutions to protect and rejuvenate your car's appearance. Choose AutoWorks for quality car care."
+                                                          : "Choose AutoWorks Car Care Center for a team that's passionate about cars, dedicated to detail, and committed to excellence. We use cutting-edge technology and top-tier products to ensure exceptional results. When you want the best in car care, Auto Works is the place to go.",
                                                   style: const TextStyle(
-                                                    fontSize: 15,
+                                                    fontSize: 17,
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.bold,
                                                     // wordSpacing: 5,
                                                   ),
-                                                  textAlign: TextAlign.justify,
+                                                  textAlign: TextAlign.center,
                                                 ),
                                               ),
                                               const SizedBox(
@@ -264,7 +285,7 @@ class _ContentsPageState extends State<ContentsPage> {
                                     color: Colors.black, fontSize: 12),
                               ),
                               subtitle: const Text(
-                                '9:30 - 01:30 / 3:30 - 09:30',
+                                '9:30 AM - 01:30 PM / 3:30 PM - 09:30 PM',
                                 style: TextStyle(
                                     color: AppColors.red, fontSize: 12),
                               ),
@@ -287,7 +308,7 @@ class _ContentsPageState extends State<ContentsPage> {
                                     color: Colors.white, fontSize: 12),
                               ),
                               subtitle: const Text(
-                                '+974 4486 7214',
+                                '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 18),
                               ),
@@ -303,15 +324,19 @@ class _ContentsPageState extends State<ContentsPage> {
                           ),
                           child: Center(
                             child: ListTile(
+                              onTap: () {
+                                launchUrl(Uri.parse(
+                                    "https://maps.app.goo.gl/MXKH9kNQ1HRPLiXz9"));
+                              },
                               leading:
                                   Image.asset('assets/images/location.png'),
                               title: const Text(
-                                'Acquire services',
+                                'Location',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 18),
                               ),
                               subtitle: const Text(
-                                'Hayol Street,Doha',
+                                'Abu Hamour , Doha',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15),
                               ),
@@ -325,12 +350,13 @@ class _ContentsPageState extends State<ContentsPage> {
             ],
           ),
           Container(
-            height: constants.isLaptop ? 0.25.sh : 0.7.sh,
+            height: constants.isLaptop ? 0.35.sh : 0.7.sh,
             width: 1.sw,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
               color: Colors.black,
             ),
+            // padding: EdgeInsets.symmetric(vertical: 0.1.sh),
             child: Center(
               child: Wrap(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -911,7 +937,7 @@ class _ContentsPageState extends State<ContentsPage> {
               width: 0.60.sw,
               margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.0),
+                borderRadius: BorderRadius.circular(5),
                 color: AppColors.red,
               ),
               child: Row(
@@ -954,177 +980,216 @@ class _ContentsPageState extends State<ContentsPage> {
                 ],
               ),
             ),
-          Container(
-            height: constants.isLaptop ? 0.50.sh : 0.6.sh,
-            width: 1.sw,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
-              color: Colors.black,
-            ),
-            child: Wrap(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: WrapCrossAlignment.start,
-              runAlignment: WrapAlignment.center,
-              alignment: WrapAlignment.spaceEvenly,
-              runSpacing: 30,
+          Footer(
+            onClick: (p0) {
+              widget.onClick.call(p0);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Footer extends StatelessWidget {
+  const Footer({
+    super.key,
+    required this.onClick,
+  });
+
+  final void Function(String) onClick;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: constants.isLaptop ? 0.50.sh : 0.6.sh,
+      width: 1.sw,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4.0),
+        color: Colors.black,
+      ),
+      child: Wrap(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: WrapCrossAlignment.start,
+        runAlignment: WrapAlignment.center,
+        alignment: WrapAlignment.spaceEvenly,
+        runSpacing: 30,
+        children: [
+          SizedBox(
+            width: constants.isLaptop ? 0.2.sw : 0.8.sw,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: constants.isLaptop
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: constants.isLaptop ? 0.2.sw : 0.8.sw,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: constants.isLaptop
-                        ? CrossAxisAlignment.start
-                        : CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: constants.isLaptop ? 0.2.sw : 0.8.sw,
-                        child: const Text(
-                          'Explore the extraordinary! Join our vibrant online community for daily inspiration, engaging conversations, and exclusive updates. Connect with like-minded individuals who share your passion. Elevate your online experience with us! ',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: constants.isLaptop
-                            ? MainAxisAlignment.start
-                            : MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            FontAwesome5.instagram,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Icon(
-                            FontAwesome5.youtube,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Icon(
-                            FontAwesome5.facebook,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Icon(
-                            FontAwesome5.twitter,
-                            color: Colors.white,
-                          ),
-                        ],
-                      )
-                    ],
+                const Text(
+                  'Let us connect',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
                   ),
                 ),
-                if (constants.isLaptop)
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Comopany Links',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      const SizedBox(height: 50),
-                      for (var i = 0; i < constants.header.length; i++)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: InkWell(
-                            onTap: () {
-                              widget.onClick.call(constants.header[i]);
-                            },
-                            child: Text(
-                              constants.header[i],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
+                const SizedBox(height: 20),
                 SizedBox(
-                  width: constants.isLaptop ? 0.15.sw : 0.6.sw,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  width: constants.isLaptop ? 0.2.sw : 0.8.sw,
+                  child: const Text(
+                    'Explore the extraordinary! Join our vibrant online community for daily inspiration, engaging conversations, and exclusive updates. Connect with like-minded individuals who share your passion. Elevate your online experience with us! ',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: constants.isLaptop
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      FontAwesome5.instagram,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 12),
+                    // Icon(
+                    //   FontAwesome5.youtube,
+                    //   color: Colors.white,
+                    // ),
+                    // SizedBox(
+                    //   width: 12,
+                    // ),
+                    Icon(
+                      FontAwesome5.snapchat,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 12),
+                    Icon(
+                      FontAwesome5.facebook,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 12),
+                    Icon(
+                      FontAwesome5.linkedin,
+                      color: Colors.white,
+                    ),
+                    // Icon(
+                    //   FontAwesome5.twitter,
+                    //   color: Colors.white,
+                    // ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          if (constants.isLaptop)
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Company Links',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                for (var i = 0; i < constants.header.length; i++)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: InkWell(
+                      onTap: () {
+                        onClick.call(constants.header[i]);
+                      },
+                      child: Text(
+                        constants.header[i],
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          SizedBox(
+            width: constants.isLaptop ? 0.15.sw : 0.6.sw,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Contact Info',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(height: constants.isLaptop ? 20 : 30),
+                const Row(
+                  children: [
+                    Icon(
+                      Entypo.phone,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                const Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      'info@autoworksqa.com',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                InkWell(
+                  onTap: () {
+                    launchUrl(
+                        Uri.parse("https://maps.app.goo.gl/MXKH9kNQ1HRPLiXz9"));
+                  },
+                  child: const Row(
                     children: [
-                      const Text(
-                        'Contact Info',
+                      Icon(
+                        Octicons.location,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        'Abu Hamour , Doha',
                         style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
                         ),
                       ),
-                      SizedBox(height: constants.isLaptop ? 60 : 30),
-                      const Row(
-                        children: [
-                          Icon(
-                            Entypo.phone,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            '+974 4486 7214',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      const Row(
-                        children: [
-                          Icon(
-                            Icons.email,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            'info@autoworksqa.com',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      const Row(
-                        children: [
-                          Icon(
-                            Octicons.location,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Text(
-                            'Hayol Street,Doha',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      )
                     ],
                   ),
                 )
               ],
             ),
-          ),
+          )
         ],
       ),
     );

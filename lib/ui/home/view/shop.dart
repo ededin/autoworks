@@ -11,6 +11,7 @@ class _ShopPageState extends State<ShopPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       drawer: constants.isLaptop ? null : const MenuDrawer(),
       appBar: constants.isLaptop
           ? null
@@ -27,7 +28,7 @@ class _ShopPageState extends State<ShopPage> {
           "Coming Soon",
           style: TextStyle(
             fontSize: 50,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),

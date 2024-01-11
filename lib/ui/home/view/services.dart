@@ -1,4 +1,5 @@
 import '../../../all_packages.dart';
+import 'service_page1.dart';
 
 class SetvicesPage extends StatefulWidget {
   const SetvicesPage({super.key});
@@ -11,6 +12,7 @@ class _SetvicesPageState extends State<SetvicesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       drawer: constants.isLaptop ? null : const MenuDrawer(),
       appBar: constants.isLaptop
           ? null
@@ -22,20 +24,19 @@ class _SetvicesPageState extends State<SetvicesPage> {
                 height: 50,
               ),
             ),
-      body: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 0.65.sh),
-        child: SizedBox(
-          width: 1.sw,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 0.05.sw),
-            child: Wrap(
+      body: SizedBox(
+        width: 1.sw,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0.05.sw),
+          child: SingleChildScrollView(
+            child: Column(
               children: [
                 const SizedBox(height: 100),
                 const Text(
                   "Services",
                   style: TextStyle(
                     fontSize: 50,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 Center(
@@ -44,43 +45,53 @@ class _SetvicesPageState extends State<SetvicesPage> {
                     alignment: WrapAlignment.spaceEvenly,
                     children: [
                       for (int i = 0; i < services.length; i++)
-                        Builder(builder: (context) {
-                          // TextSized textSized = TextSized(
-                          //   text: services[i],
-                          //   textStyle: const TextStyle(
-                          //     fontSize: 25,
-                          //     color: Colors.white,
-                          //   ),
-                          // );
-                          return Padding(
-                            padding: EdgeInsets.symmetric(vertical: 0.05.sh),
-                            child: SizedBox(
-                              width: 0.25.sw,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                        Builder(
+                          builder: (context) {
+                            // TextSized textSized = TextSized(
+                            //   text: services[i],
+                            //   textStyle: const TextStyle(
+                            //     fontSize: 25,
+                            //     color: Colors.white,
+                            //   ),
+                            // );
+                            return Padding(
+                              padding: EdgeInsets.symmetric(vertical: 0.05.sh),
+                              child: SizedBox(
+                                width: 0.4.sw,
+                                child: ListTile(
+                                  onTap: () {
+                                    Navigator.push(context, PageRouteBuilder(
+                                      pageBuilder: (context, animation,
+                                          secondaryAnimation) {
+                                        return ServicePage(
+                                          image: servicesImages[i],
+                                          name: services[i],
+                                          content: servicesContent[i],
+                                        );
+                                      },
+                                    ));
+                                  },
+                                  leading: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: Image.asset(
+                                      servicesImages[i],
+                                      width: 30,
+                                      height: 30,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  title: Text(
                                     services[i],
                                     style: const TextStyle(
                                       fontSize: 15,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                   ),
-                                  const SizedBox(height: 10),
-                                  /*  Container(
-                                  width: (textSized.txtSize.width) * 0.2,
-                                  height: 2,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                ) */
-                                ],
+                                ),
                               ),
-                            ),
-                          );
-                        })
+                            );
+                          },
+                        )
                     ],
                   ),
                 ),

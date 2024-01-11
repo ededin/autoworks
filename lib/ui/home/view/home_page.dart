@@ -1,4 +1,6 @@
 import 'package:autoworks/all_packages.dart';
+import 'package:autoworks/ui/home/view/service_page1.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<GlobalKey> servicesKeys =
     List.generate(services.length, (index) => GlobalKey());
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     constants.screenHeight = MediaQuery.of(context).size.height;
     constants.screenWidth = MediaQuery.of(context).size.width;
 
-    double height() => header == "Contact Us" ? 0.6.sh : 0.7.sh;
+    double height() => header == "Contact Us" ? 0.6.sh : 0.9.sh;
 
     return Scaffold(
       extendBody: true,
@@ -66,7 +68,15 @@ class _HomePageState extends State<HomePage> {
                 opacity: header.isNotEmpty ? 1 : 0,
                 child: AnimatedContainer(
                   height: header.isNotEmpty ? height() : 0,
-                  decoration: const BoxDecoration(color: Colors.black),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/bg.jpeg',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   curve: Curves.ease,
                   duration: const Duration(milliseconds: 300),
                   child: header == "About Us"
@@ -101,6 +111,7 @@ class _HomePageState extends State<HomePage> {
             ),
           if (constants.isLaptop)
             MenuBar(
+              bg: header.isNotEmpty ? Colors.transparent : null,
               onHover: (p0) {
                 if (p0 != "Home") {
                   setState(() {
@@ -143,10 +154,10 @@ class ContactUS extends StatelessWidget {
           const SizedBox(height: 40),
           SizedBox(
             width: 0.6.sw,
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Entypo.phone,
@@ -154,7 +165,7 @@ class ContactUS extends StatelessWidget {
                     ),
                     SizedBox(width: 20),
                     Text(
-                      '+974 4486 7214',
+                      '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
@@ -163,7 +174,7 @@ class ContactUS extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.email,
@@ -180,24 +191,30 @@ class ContactUS extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Octicons.location,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    Text(
-                      'Hayol Street,Doha',
-                      style: TextStyle(
+                InkWell(
+                  onTap: () {
+                    launchUrl(
+                        Uri.parse("https://maps.app.goo.gl/MXKH9kNQ1HRPLiXz9"));
+                  },
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Octicons.location,
                         color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        'Abu Hamour , Doha',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -327,43 +344,53 @@ class Services extends StatelessWidget {
                   alignment: WrapAlignment.spaceEvenly,
                   children: [
                     for (int i = 0; i < services.length; i++)
-                      Builder(builder: (context) {
-                        // TextSized textSized = TextSized(
-                        //   text: services[i],
-                        //   textStyle: const TextStyle(
-                        //     fontSize: 25,
-                        //     color: Colors.white,
-                        //   ),
-                        // );
-                        return Padding(
-                          padding: EdgeInsets.symmetric(vertical: 0.05.sh),
-                          child: SizedBox(
-                            width: 0.25.sw,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
+                      Builder(
+                        builder: (context) {
+                          // TextSized textSized = TextSized(
+                          //   text: services[i],
+                          //   textStyle: const TextStyle(
+                          //     fontSize: 25,
+                          //     color: Colors.white,
+                          //   ),
+                          // );
+                          return Padding(
+                            padding: EdgeInsets.symmetric(vertical: 0.05.sh),
+                            child: SizedBox(
+                              width: 0.25.sw,
+                              child: ListTile(
+                                onTap: () {
+                                  Navigator.push(context, PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                        secondaryAnimation) {
+                                      return ServicePage(
+                                        image: servicesImages[i],
+                                        name: services[i],
+                                        content: servicesContent[i],
+                                      );
+                                    },
+                                  ));
+                                },
+                                leading: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.asset(
+                                    servicesImages[i],
+                                    width: 120,
+                                    height: 120,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                title: Text(
                                   services[i],
                                   style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
-                                /*  Container(
-                                  width: (textSized.txtSize.width) * 0.2,
-                                  height: 2,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                ) */
-                              ],
+                              ),
                             ),
-                          ),
-                        );
-                      })
+                          );
+                        },
+                      )
                   ],
                 ),
               ),

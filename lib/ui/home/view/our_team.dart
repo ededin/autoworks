@@ -11,6 +11,7 @@ class _OurTeamPageState extends State<OurTeamPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       drawer: constants.isLaptop ? null : const MenuDrawer(),
       appBar: constants.isLaptop
           ? null
@@ -23,37 +24,37 @@ class _OurTeamPageState extends State<OurTeamPage> {
               ),
             ),
       body: SingleChildScrollView(
-        child: Wrap(
-          children: [
-            // const SizedBox(height: 100),
-            const Text(
-              "Our Team",
-              style: TextStyle(
-                fontSize: 50,
-                color: Colors.black,
-              ),
-            ),
-            Wrap(
-              children: [
-                Image.asset(
-                  height: 0.4.sh,
-                  // width: 200,
-                  'assets/images/team.png',
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // const SizedBox(height: 100),
+              const Text(
+                "Our Team",
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
                 ),
-                SizedBox(
-                  width: 0.5.sw,
-                  child: const Text(
-                    "\n\nOur team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
+              ),
+
+              Image.asset(
+                height: 0.4.sh,
+                // width: 200,
+                'assets/images/team.png',
+              ),
+              SizedBox(
+                width: 0.5.sw,
+                child: const Text(
+                  "\n\nOur team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

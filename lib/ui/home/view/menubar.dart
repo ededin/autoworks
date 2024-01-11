@@ -2,21 +2,32 @@ import '../../../all_packages.dart';
 
 class MenuBar extends StatelessWidget {
   final void Function(String) onHover;
+  final Color? bg;
   const MenuBar({
     super.key,
     required this.onHover,
+    this.bg,
   });
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: const BoxDecoration(color: Colors.black),
+      decoration: BoxDecoration(color: bg ?? Colors.black),
       child: Row(
         children: [
           const Spacer(),
-          Image.asset(
-            'assets/images/logo.png',
-            height: 60,
+          InkWell(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) {
+                  return const HomePage();
+                },
+              ), (route) => false);
+            },
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 60,
+            ),
           ),
           SizedBox(
             height: 100,
@@ -26,23 +37,35 @@ class MenuBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 for (var i = 0; i < constants.header.length; i++)
-                  MouseRegion(
-                    onEnter: (event) async {
-                      onHover.call("");
-                      await Future.delayed(const Duration(milliseconds: 10));
-                      onHover.call(constants.header[i]);
+                  InkWell(
+                    onTap: () {
+                      if (constants.header[i] == "Home") {
+                        Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                            return const HomePage();
+                          },
+                        ), (route) => false);
+                      }
                     },
-                    // onExit: (event) {
-                    //   onHover.call('');
-                    // },
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        constants.header[i],
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                    child: MouseRegion(
+                      onEnter: (event) async {
+                        onHover.call("");
+                        await Future.delayed(const Duration(milliseconds: 10));
+                        onHover.call(constants.header[i]);
+                      },
+                      // onExit: (event) {
+                      //   onHover.call('');
+                      // },
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          constants.header[i],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
