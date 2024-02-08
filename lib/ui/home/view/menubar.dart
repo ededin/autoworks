@@ -12,7 +12,17 @@ class MenuBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: bg ?? Colors.black),
+      decoration: BoxDecoration(
+        color: bg ?? Colors.black,
+        image: bg == null
+            ? DecorationImage(
+                image: AssetImage(
+                  'assets/images/bg.jpeg',
+                ),
+                fit: BoxFit.fitWidth,
+              )
+            : null,
+      ),
       child: Row(
         children: [
           const Spacer(),

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -46,13 +46,13 @@ List<String> servicesContent = [
 List<String> servicesImages = [
   'assets/images/ppf.jpg',
   'assets/images/peelable.png',
-  '', //
+  'assets/images/window.jpg',
   'assets/images/nano.jpg',
   'assets/images/wrapping.jpg',
   'assets/images/pdr.jpg',
   'assets/images/alloy.png',
   'assets/images/leather.jpg',
-  '', //
+  'assets/images/detailing.jpg',
 ];
 
 class ContentsPage extends StatefulWidget {
@@ -65,7 +65,7 @@ class ContentsPage extends StatefulWidget {
 }
 
 class _ContentsPageState extends State<ContentsPage> {
-  String? selectedService;
+  Set<String> selectedService = {};
   @override
   Widget build(BuildContext context) {
     constants.screenHeight = MediaQuery.of(context).size.height;
@@ -350,18 +350,18 @@ class _ContentsPageState extends State<ContentsPage> {
             ],
           ),
           Container(
-            height: constants.isLaptop ? 0.35.sh : 0.7.sh,
+            height: constants.isLaptop ? 0.5.sh : 1.3.sh,
             width: 1.sw,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: Colors.black,
+              color: const Color(0xff333333),
             ),
             // padding: EdgeInsets.symmetric(vertical: 0.1.sh),
             child: Center(
               child: Wrap(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 alignment: WrapAlignment.spaceEvenly,
                 runAlignment: WrapAlignment.spaceEvenly,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 runSpacing: !constants.isLaptop ? 0.07.sh : 10,
                 children: [
                   Column(
@@ -482,50 +482,108 @@ class _ContentsPageState extends State<ContentsPage> {
                       ),
                     ),
                   ), */
+                  // if (constants.isLaptop)
                   SizedBox(
-                    width: constants.isLaptop ? null : 0.8.sw,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 25,
-                          vertical: 2,
-                        ),
-                        child: DropdownButton(
-                          value: selectedService,
-                          style: const TextStyle(color: Colors.black),
-                          dropdownColor: Colors.white,
-                          underline: const SizedBox(),
-                          iconEnabledColor: Colors.black,
-                          isExpanded: !constants.isLaptop,
-                          hint: Text(
-                            'Select Service',
-                            style: GoogleFonts.questrial(color: Colors.black),
+                    width: constants.isLaptop ? 0.4.sw : 0.8.sw,
+                    height: constants.isLaptop ? 0.37.sh : null,
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Select Service",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
                           ),
-                          items: services
-                              .map(
-                                (e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(
-                                    e,
-                                    style: GoogleFonts.questrial(
-                                        color: Colors.black),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              selectedService = value;
-                            });
-                          },
                         ),
-                      ),
+                        const SizedBox(height: 20),
+                        SizedBox(
+                          height: constants.isLaptop ? 0.3.sh : null,
+                          child: Row(
+                            children: [
+                              for (int i = 0; i < 2; i++)
+                                Column(
+                                  children: [
+                                    for (int j = (i * 4); j < 4 * (i + 1); j++)
+                                      SizedBox(
+                                        width: constants.isLaptop
+                                            ? 0.2.sw
+                                            : 0.4.sw,
+                                        child: CheckboxListTile(
+                                          value: selectedService
+                                              .contains(services[j]),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              if (selectedService
+                                                  .contains(services[j])) {
+                                                selectedService
+                                                    .remove(services[j]);
+                                              } else {
+                                                selectedService
+                                                    .add(services[j]);
+                                              }
+                                            });
+                                          },
+                                          title: Text(
+                                            services[j],
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                  ],
+                                )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
+                  /* else
+                    SizedBox(
+                      width: constants.isLaptop ? null : 0.8.sw,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                            vertical: 2,
+                          ),
+                          child: DropdownButton(
+                            value: selectedService,
+                            style: const TextStyle(color: Colors.black),
+                            dropdownColor: Colors.white,
+                            underline: const SizedBox(),
+                            iconEnabledColor: Colors.black,
+                            isExpanded: !constants.isLaptop,
+                            hint: Text(
+                              'Select Service',
+                              style: GoogleFonts.questrial(color: Colors.black),
+                            ),
+                            items: services
+                                .map(
+                                  (e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(
+                                      e,
+                                      style: GoogleFonts.questrial(
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                selectedService = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ), */
                   SizedBox(
                     // width: 0.15.sw,
                     height: 50,
@@ -885,15 +943,15 @@ class _ContentsPageState extends State<ContentsPage> {
                 const SizedBox(
                   height: 20,
                 ),
+                // const Text(
+                //   'OUR BLOG',
+                //   style: TextStyle(
+                //     color: Colors.white,
+                //     fontSize: 20,
+                //   ),
+                // ),
                 const Text(
-                  'OUR BLOG',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  'Our Latest News',
+                  'Our Premium Products',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 26,
@@ -910,14 +968,14 @@ class _ContentsPageState extends State<ContentsPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        for (int index = 0; index < 3; index++)
+                        for (int index = 1; index <= 3; index++)
                           Container(
                             height: 0.50.sh,
                             width: 0.25.sw,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                  'assets/images/news$index.png',
+                                  'assets/images/${index}_image.jpeg',
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -1031,7 +1089,14 @@ class Footer extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
+                if (constants.isLaptop)
+                  Image.asset(
+                    'assets/images/divider.png',
+                    height: 5,
+                    width: 0.09.sw,
+                  ),
+                const SizedBox(height: 10),
                 SizedBox(
                   width: constants.isLaptop ? 0.2.sw : 0.8.sw,
                   child: const Text(
@@ -1083,6 +1148,7 @@ class Footer extends StatelessWidget {
           if (constants.isLaptop)
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'Company Links',
@@ -1092,7 +1158,14 @@ class Footer extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
+                if (constants.isLaptop)
+                  Image.asset(
+                    'assets/images/divider.png',
+                    height: 5,
+                    width: 0.08.sw,
+                  ),
+                const SizedBox(height: 10),
                 for (var i = 0; i < constants.header.length; i++)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
@@ -1104,6 +1177,7 @@ class Footer extends StatelessWidget {
                         constants.header[i],
                         style: const TextStyle(
                           color: Colors.white,
+                          fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -1116,6 +1190,7 @@ class Footer extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'Contact Info',
@@ -1125,22 +1200,76 @@ class Footer extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                SizedBox(height: constants.isLaptop ? 20 : 30),
-                const Row(
+                const SizedBox(height: 10),
+                if (constants.isLaptop)
+                  Image.asset(
+                    'assets/images/divider.png',
+                    height: 5,
+                    width: 0.06.sw,
+                  ),
+                const SizedBox(height: 10),
+                // SizedBox(height: constants.isLaptop ? 20 : 30),
+                const Column(
                   children: [
-                    Icon(
-                      Entypo.phone,
-                      color: Colors.white,
+                    Row(
+                      children: [
+                        Icon(
+                          Entypo.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 3335 2772',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 12,
+                    Row(
+                      children: [
+                        Icon(
+                          Entypo.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 3352 7555',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                      ),
+                    Row(
+                      children: [
+                        Icon(
+                          LineariconsFree.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 4486 7214',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -1157,7 +1286,10 @@ class Footer extends StatelessWidget {
                     Text(
                       'info@autoworksqa.com',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),
@@ -1181,7 +1313,7 @@ class Footer extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w400,
-                          fontSize: 12,
+                          fontSize: 16,
                         ),
                       ),
                     ],

@@ -40,7 +40,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
               Image.asset(
                 height: 0.4.sh,
                 // width: 200,
-                'assets/images/car1.png',
+                'assets/images/aw_logo.png',
               ),
               SizedBox(
                 width: 0.8.sw,

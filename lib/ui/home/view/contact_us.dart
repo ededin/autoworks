@@ -1,3 +1,4 @@
+import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../all_packages.dart';
@@ -49,24 +50,68 @@ class _ContactUsPageState extends State<ContactUsPage> {
             ),
             const SizedBox(height: 40),
 
-            const Row(
-              mainAxisSize: MainAxisSize.min,
+            const Column(
               children: [
-                Icon(
-                  Entypo.phone,
-                  color: Colors.white,
+                Row(
+                  children: [
+                    Icon(
+                      Entypo.phone,
+                      color: Colors.white,
+                      size: 12,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      '+974 3335 2772',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 20),
-                Text(
-                  '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
-                  ),
+                Row(
+                  children: [
+                    Icon(
+                      Entypo.phone,
+                      color: Colors.white,
+                      size: 12,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      '+974 3352 7555',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      LineariconsFree.phone,
+                      color: Colors.white,
+                      size: 12,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      '+974 4486 7214',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
+
             const SizedBox(height: 12),
             const Row(
               mainAxisSize: MainAxisSize.min,

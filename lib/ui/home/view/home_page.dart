@@ -1,5 +1,6 @@
 import 'package:autoworks/all_packages.dart';
 import 'package:autoworks/ui/home/view/service_page1.dart';
+import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<GlobalKey> servicesKeys =
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     constants.screenHeight = MediaQuery.of(context).size.height;
     constants.screenWidth = MediaQuery.of(context).size.width;
 
-    double height() => header == "Contact Us" ? 0.6.sh : 0.9.sh;
+    double height() => 0.9.sh;
 
     return Scaffold(
       extendBody: true,
@@ -157,20 +158,64 @@ class ContactUS extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Row(
+                const Column(
                   children: [
-                    Icon(
-                      Entypo.phone,
-                      color: Colors.white,
+                    Row(
+                      children: [
+                        Icon(
+                          Entypo.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 3335 2772',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 20),
-                    Text(
-                      '+974 3335 2772\n+974 3352 7555\n+974 4486 7214',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
-                      ),
+                    Row(
+                      children: [
+                        Icon(
+                          Entypo.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 3352 7555',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          LineariconsFree.phone,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          '+974 4486 7214',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -232,39 +277,52 @@ class AboutUS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 100),
-        const Text(
-          "About Us",
-          style: TextStyle(
-            fontSize: 50,
-            color: Colors.white,
+    return SizedBox(
+      width: 1.sw,
+      child: Column(
+        children: [
+          const SizedBox(height: 100),
+          const Text(
+            "About Us",
+            style: TextStyle(
+              fontSize: 50,
+              color: Colors.white,
+            ),
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(
-              height: 0.4.sh,
-              // width: 200,
-              'assets/images/car1.png',
-            ),
-            SizedBox(
-              width: 0.5.sw,
-              height: 0.5.sh,
-              child: const Text(
-                "\n\nAuto Works Car Care Center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make clients feel satisfied.",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+          SizedBox(height: 0.1.sh),
+          SizedBox(
+            width: 0.8.sw,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  height: 0.3.sh,
+                  width: 0.28.sw,
+
+                  // width: 200,
+                  'assets/images/aw_logo.png',
+                  fit: BoxFit.cover,
                 ),
-              ),
+                SizedBox(
+                  width: 0.02.sw,
+                ),
+                SizedBox(
+                  width: 0.5.sw,
+                  // height: 0.35.sh,
+                  child: const Text(
+                    "\nAuto Works Car Care Center was started in 2022 in Doha-Qatar, out of a passion for high quality car care and detailing. We are certified from the top-class auto detailing manufacturers around the world. We are using some of the most professional and top- class products in the market that we personally tested and used professionally to ensure the best high-quality, long-lasting results along with our well-trained staff to give the best service for your automobile. Our center is well prepared with the best environment for the clients cars along with the 24hr CCTV for safety and security. Our main goal is to achieve the best detailing and protection results for the cars and to make clients feel satisfied.",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -276,8 +334,8 @@ class OurTeam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 0.65.sh),
+    return SizedBox(
+      width: 1.sw,
       child: Column(
         children: [
           const SizedBox(height: 100),
@@ -288,26 +346,33 @@ class OurTeam extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                height: 0.4.sh,
-                // width: 200,
-                'assets/images/team.png',
-              ),
-              SizedBox(
-                width: 0.5.sw,
-                child: const Text(
-                  "\n\nOur team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
+          SizedBox(height: 0.1.sh),
+          SizedBox(
+            width: 0.5.sw,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  height: 0.2.sh,
+                  // width: 200,
+                  'assets/images/team.png',
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 0.25.sw,
+                    height: 0.2.sh,
+                    child: const Text(
+                      "Our team is the foundation of our quality, we have handpicked specialists, installing technicians, detailers, tinters, Polishers, Designers and Helpers to ensure the best quality is given for our cars.",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

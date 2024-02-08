@@ -35,93 +35,158 @@ class _ServicePageState extends State<ServicePage> {
             ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                // const SizedBox(height: 120),
-                Container(
-                  height: 0.6.sh,
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(widget.image),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: 0.6.sh,
-                        width: 1.sw,
-                        color: Colors.black.withOpacity(0.8),
-                      ),
-                      Center(
-                        child: Text(
-                          widget.name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 50,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+          SizedBox(
+            width: 1.sw,
+            height: 1.sh,
+            child: DecoratedBox(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/services_bg.jpg'),
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 20),
-                // Image.asset(
-                //   widget.image,
-                //   height: 0.3.sh,
-                // ),
-
-                const SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0.15.sw),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.name,
-                        style: const TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        "\n${widget.content}",
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 100),
-                const Text(
-                  "SIGNATURE FEATURES\n",
-                  style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.black,
-                  ),
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
+                    // const SizedBox(height: 120),
+                    Container(
+                      height: 0.6.sh,
+                      width: 1.sw,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(widget.image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 0.6.sh,
+                            width: 1.sw,
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          Center(
+                            child: Text(
+                              widget.name,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    // Image.asset(
+                    //   widget.image,
+                    //   height: 0.3.sh,
+                    // ),
+
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 0.15.sw),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.name,
+                            style: const TextStyle(
+                              fontSize: 30,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "\n${widget.content}",
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 100),
+                    const Text(
+                      "SIGNATURE FEATURES\n",
+                      style: TextStyle(
+                        fontSize: 50,
+                        color: Colors.black,
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 0.3.sh,
+                              width: 0.3.sw,
+                              child: Image.asset(
+                                "assets/images/ppf1.jpeg",
+                              ),
+                            ),
+                            const SizedBox(height: 7),
+                            const Text(
+                              "Hydrophobic Properties",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const Text(
+                              "\nRepels water, dirt, and road grime.",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 0.3.sh,
+                              width: 0.3.sw,
+                              child: Image.asset(
+                                "assets/images/ppf2.jpeg",
+                              ),
+                            ),
+                            const SizedBox(height: 7),
+                            const Text(
+                              "Self-Healing",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const Text(
+                              "\nAdvanced top coat properties eliminate fine scratches and swirl marks, when exposed to heat.",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 50),
                     Column(
                       children: [
                         SizedBox(
                           height: 0.3.sh,
                           width: 0.3.sw,
                           child: Image.asset(
-                            "assets/images/ppf1.jpeg",
+                            "assets/images/ppf3.jpeg",
                           ),
                         ),
                         const SizedBox(height: 7),
                         const Text(
-                          "Hydrophobic Properties",
+                          "Flawless Fit",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -129,87 +194,35 @@ class _ServicePageState extends State<ServicePage> {
                           ),
                         ),
                         const Text(
-                          "\nRepels water, dirt, and road grime.",
+                          "\nIndustry-leading design patterns, specified for each make and model\n\n\n\n\n",
                           style: TextStyle(
                             color: Colors.black,
                           ),
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 0.3.sh,
-                          width: 0.3.sw,
-                          child: Image.asset(
-                            "assets/images/ppf2.jpeg",
-                          ),
-                        ),
-                        const SizedBox(height: 7),
-                        const Text(
-                          "Self-Healing",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                        const Text(
-                          "\nAdvanced top coat properties eliminate fine scratches and swirl marks, when exposed to heat.",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
+                    Footer(
+                      onClick: (p0) {
+                        if (constants.isLaptop) {
+                          if (p0 != "Home") {
+                            setState(() {
+                              header = p0;
+                            });
+                          } else {
+                            Navigator.pushAndRemoveUntil(context,
+                                PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) {
+                                return const HomePage();
+                              },
+                            ), (route) => false);
+                          }
+                        }
+                      },
+                    )
                   ],
                 ),
-                const SizedBox(height: 50),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 0.3.sh,
-                      width: 0.3.sw,
-                      child: Image.asset(
-                        "assets/images/ppf3.jpeg",
-                      ),
-                    ),
-                    const SizedBox(height: 7),
-                    const Text(
-                      "Flawless Fit",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const Text(
-                      "\nIndustry-leading design patterns, specified for each make and model\n\n\n\n\n",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-                Footer(
-                  onClick: (p0) {
-                    if (constants.isLaptop) {
-                      if (p0 != "Home") {
-                        setState(() {
-                          header = p0;
-                        });
-                      } else {
-                        Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) {
-                            return const HomePage();
-                          },
-                        ), (route) => false);
-                      }
-                    }
-                  },
-                )
-              ],
+              ),
             ),
           ),
           if ((constants.isLaptop))
